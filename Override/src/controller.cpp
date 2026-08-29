@@ -1,3 +1,5 @@
+#include "pneumatics.h"
+
 void stopDriving() {
     LeftFront.stop();
     LeftMiddle.stop();
