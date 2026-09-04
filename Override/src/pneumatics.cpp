@@ -1,7 +1,9 @@
+#include "vex.h"
+
 const int HOOP = 0;
 const int TILT = 1;
 
-vex::digitalout* actuators[2];
+vex::digital_out* actuators[2];
 
 bool isActOpen[] = {false, false};
 

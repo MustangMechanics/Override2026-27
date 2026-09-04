@@ -1,9 +1,9 @@
-bool isHoopDown() { return isActOpen[HOOP]; }
-void hoopDown() { openActuator(HOOP); }
-void hoopUp() { closeActuator(HOOP); }
-bool toggleHoop() { return toggleActuator(HOOP); }
+bool isHoopDown();
+void hoopDown();
+void hoopUp();
+bool toggleHoop();
 
-bool isTiltOut() { return isActOpen[TILT]; }
-void tiltOut() { openActuator(TILT); }
-void tiltIn() { closeActuator(TILT); }
-bool toggleTilt() { return toggleActuator(TILT); }
+bool isTiltOut();
+void tiltOut();
+void tiltIn();
+bool toggleTilt();

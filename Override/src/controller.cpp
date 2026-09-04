@@ -1,4 +1,5 @@
 #include "pneumatics.h"
+#include "robot-config.h"
 
 void stopDriving() {
     LeftFront.stop();
@@ -31,9 +32,9 @@ void normalizedDrive(double x, double y) {
 void drivercontrol(void) {
     RightLifter.setBrake(vex::hold);
     LeftLifter.setBrake(vex::hold);
-}
 
-while (true) {
+
+    while (true) {
     // Arcade Drive
     int x = Controller1.Axis1.position(vex::percent);
     int y = -Controller1.Axis3.position(vex::percent);
@@ -63,11 +64,11 @@ while (true) {
         LeftLifter.stop();
     }
 
-    if (Controller1.Button.pressing()) {
+    if (Controller1.ButtonA.pressing()) {
         toggleTilt();
     }
 
-    if (Controller.ButtonB.pressing()) {
+    if (Controller1.ButtonB.pressing()) {
         toggleHoop();
     }
 
