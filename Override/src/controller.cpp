@@ -1,3 +1,4 @@
+#include "controller.h"
 #include "pneumatics.h"
 #include "robot-config.h"
 
@@ -35,9 +36,9 @@ void drivercontrol(void) {
 
 
     while (true) {
-    // Arcade Drive
-    int x = Controller1.Axis1.position(vex::percent);
-    int y = -Controller1.Axis3.position(vex::percent);
+        // Arcade Drive
+        int x = Controller1.Axis1.position(vex::percent);
+        int y = -Controller1.Axis3.position(vex::percent);
     if (x > 5 || x < -5 || y > 5 || y < -5) {
 
     } else {
@@ -72,6 +73,19 @@ void drivercontrol(void) {
         toggleHoop();
     }
 
+    if (Controller1.ButtonX.pressing()) {
+        toggleCatcher();
+    }
     vex::task::sleep(10);
+    }
 }
 
+
+void driveAtSpeed(double speed) {
+    LeftFront.spin(vex::reverse, speed, vex::percent);
+    LeftBack.spin(vex::reverse, speed, vex::percent);
+    LeftMiddle.spin(vex::reverse, speed, vex::percent);
+    RightFront.spin(vex::forward, speed, vex::percent);
+    RightBack.spin(vex::forward, speed, vex::percent);
+    RightMiddle.spin(vex::forward, speed, vex::percent);
+}

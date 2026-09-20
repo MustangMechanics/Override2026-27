@@ -8,7 +8,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
-
+#include "controller.h"
 using namespace vex;
 
 // A global instance of competition
@@ -45,6 +45,7 @@ void pre_auton(void) {
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
+  driveAtSpeed(30);
   // ..........................................................................
 }
 

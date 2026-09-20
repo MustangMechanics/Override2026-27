@@ -4,5 +4,6 @@
 #include "vex.h"
 
 void drivercontrol();
+void driveAtSpeed(double speed);
 
 #endif // CONTROLLER_H

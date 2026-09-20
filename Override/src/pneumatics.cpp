@@ -1,17 +1,20 @@
 #include "vex.h"
+#include "robot-config.h"
 
 const int HOOP = 0;
 const int TILT = 1;
+const int CATCHER = 2;
 
-vex::digital_out* actuators[2];
+vex::digital_out* actuators[3];
 
-bool isActOpen[] = {false, false};
+bool isActOpen[] = {false, false, false};
 
-long nextActTime[] = {0, 0};
+long nextActTime[] = {0, 0, 0};
 
 void initPneumatics() {
     actuators[HOOP] = new vex::digital_out(Brain.ThreeWirePort.A);
     actuators[TILT] = new vex::digital_out(Brain.ThreeWirePort.B);
+    actuators[CATCHER] = new vex::digital_out(Brain.ThreeWirePort.C);
 }
 
 void openActuator(int index) {
@@ -44,3 +47,8 @@ bool isTiltOut() { return isActOpen[TILT]; }
 void tiltOut() { openActuator(TILT); }
 void tiltIn() { closeActuator(TILT); }
 bool toggleTilt() { return toggleActuator(TILT); }
+
+bool isCatcherOut() { return isActOpen[CATCHER]; }
+void catcherOut() { openActuator(CATCHER); }
+void catcherIn() { closeActuator(CATCHER); }
+bool toggleCatcher() { return toggleActuator(CATCHER); }
