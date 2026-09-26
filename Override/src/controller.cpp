@@ -30,7 +30,8 @@ void normalizedDrive(double x, double y) {
 }
 
 
-void drivercontrol(void) {
+void driver(void) {
+    printf("hello world\n");
     RightLifter.setBrake(vex::hold);
     LeftLifter.setBrake(vex::hold);
 
@@ -39,44 +40,45 @@ void drivercontrol(void) {
         // Arcade Drive
         int x = Controller1.Axis1.position(vex::percent);
         int y = -Controller1.Axis3.position(vex::percent);
-    if (x > 5 || x < -5 || y > 5 || y < -5) {
+        if (x > 5 || x < -5 || y > 5 || y < -5) {
 
-    } else {
-        stopDriving();
-    }
+        } else {
+            stopDriving();
+        }
+    
 
-    long time = vex::timer::system();
-    if (Controller1.ButtonR1.pressing()) {
-        Intake.spin(vex::forward, 80, vex::percent);
-    } else if (Controller1.ButtonR2.pressing()) {
-        Intake.spin(vex::reverse, 80, vex::percent);
-    } else {
-        Intake.stop();
-    }
+        long time = vex::timer::system();
+        if (Controller1.ButtonR1.pressing()) {
+            Intake.spin(vex::forward, 80, vex::percent);
+        } else if (Controller1.ButtonR2.pressing()) {
+            Intake.spin(vex::reverse, 80, vex::percent);
+        } else {
+            Intake.stop();
+        }
 
-    if (Controller1.ButtonL1.pressing()) {
-        RightLifter.spin(vex::reverse, 90, vex::percent);
-        LeftLifter.spin(vex::forward, 90, vex::percent);
-    } else if (Controller1.ButtonL2.pressing()) {
-        RightLifter.spin(vex::forward, 90, vex::percent);
-        LeftLifter.spin(vex::reverse, 90, vex::percent);
-    } else {
-        RightLifter.stop();
-        LeftLifter.stop();
-    }
+        if (Controller1.ButtonL1.pressing()) {
+            RightLifter.spin(vex::reverse, 90, vex::percent);
+            LeftLifter.spin(vex::forward, 90, vex::percent);
+        } else if (Controller1.ButtonL2.pressing()) {
+            RightLifter.spin(vex::forward, 90, vex::percent);
+            LeftLifter.spin(vex::reverse, 90, vex::percent);
+        } else {
+            RightLifter.stop();
+            LeftLifter.stop();
+        }
 
-    if (Controller1.ButtonA.pressing()) {
-        toggleTilt();
-    }
+        if (Controller1.ButtonA.pressing()) {
+            toggleTilt();
+        }
 
-    if (Controller1.ButtonB.pressing()) {
-        toggleHoop();
-    }
-
-    if (Controller1.ButtonX.pressing()) {
-        toggleCatcher();
-    }
-    vex::task::sleep(10);
+        if (Controller1.ButtonB.pressing()) {
+            toggleHoop();
+        }
+        
+        if (Controller1.ButtonX.pressing()) {
+            toggleCatcher();
+        }
+        vex::task::sleep(10);
     }
 }
 

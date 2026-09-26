@@ -3,7 +3,7 @@
 
 #include "vex.h"
 
-void drivercontrol();
+void driver();
 void driveAtSpeed(double speed);
 
 #endif // CONTROLLER_H

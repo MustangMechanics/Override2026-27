@@ -9,6 +9,7 @@
 
 #include "vex.h"
 #include "controller.h"
+#include "pneumatics.h"
 using namespace vex;
 
 // A global instance of competition
@@ -81,11 +82,14 @@ void usercontrol(void) {
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonomous);
-  Competition.drivercontrol(usercontrol);
+  //Competition.autonomous(autonomous);
+  Competition.drivercontrol(driver);
+
 
   // Run the pre-autonomous function.
   pre_auton();
+  initPneumatics();
+  // driver();
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

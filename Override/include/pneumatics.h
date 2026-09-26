@@ -1,3 +1,8 @@
+#ifndef PNEUMATICS_H
+#define PNEUMATICS_H
+
+void initPneumatics();
+
 bool isHoopDown();
 void hoopDown();
 void hoopUp();
@@ -12,3 +17,5 @@ bool isCatcherOut();
 void catcherOut();
 void catcherIn();
 bool toggleCatcher();
+
+#endif // PNEUMATICS_H
