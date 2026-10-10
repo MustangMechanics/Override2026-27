@@ -1,16 +1,7 @@
 #include "controller.h"
 #include "pneumatics.h"
 #include "robot-config.h"
-
-void stopDriving() {
-    LeftFront.stop();
-    LeftMiddle.stop();
-    LeftBack.stop();
-    RightFront.stop();
-    RightMiddle.stop();
-    RightBack.stop();
-}
-
+#include "movement.h"
 
 void normalizedDrive(double x, double y) {
     x = x < 0 ? (x * -x / 100) : (x * x / 100);
@@ -41,7 +32,7 @@ void driver(void) {
         int x = Controller1.Axis1.position(vex::percent);
         int y = -Controller1.Axis3.position(vex::percent);
         if (x > 5 || x < -5 || y > 5 || y < -5) {
-
+            normalizedDrive(x, y);
         } else {
             stopDriving();
         }

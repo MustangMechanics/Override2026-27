@@ -10,6 +10,8 @@
 #include "vex.h"
 #include "controller.h"
 #include "pneumatics.h"
+#include "movement.h"
+#include "test.h"
 using namespace vex;
 
 // A global instance of competition
@@ -90,6 +92,7 @@ int main() {
   pre_auton();
   initPneumatics();
   // driver();
+  testDrive(12);
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
