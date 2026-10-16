@@ -22,7 +22,7 @@ void normalizedDrive(double x, double y) {
 
 
 void driver(void) {
-    printf("hello world\n");
+    setBrakeMode(vex::brake);
     RightLifter.setBrake(vex::hold);
     LeftLifter.setBrake(vex::hold);
 

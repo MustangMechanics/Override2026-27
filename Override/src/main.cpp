@@ -85,8 +85,8 @@ void usercontrol(void) {
 int main() {
   // Set up callbacks for autonomous and driver control periods.
   //Competition.autonomous(autonomous);
-  Competition.drivercontrol(driver);
-
+  // Competition.drivercontrol(driver);
+  printf("Hello VEX World! !\n");
 
   // Run the pre-autonomous function.
   pre_auton();
