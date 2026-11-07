@@ -51,8 +51,8 @@ void driver(void) {
             RightLifter.spin(vex::reverse, 90, vex::percent);
             LeftLifter.spin(vex::forward, 90, vex::percent);
         } else if (Controller1.ButtonL2.pressing()) {
-            RightLifter.spin(vex::forward, 90, vex::percent);
-            LeftLifter.spin(vex::reverse, 90, vex::percent);
+            RightLifter.spin(vex::forward, 50, vex::percent);
+            LeftLifter.spin(vex::reverse, 50, vex::percent);
         } else {
             RightLifter.stop();
             LeftLifter.stop();
@@ -68,6 +68,10 @@ void driver(void) {
         
         if (Controller1.ButtonX.pressing()) {
             toggleCatcher();
+        }
+
+        if (Controller1.ButtonY.pressing()) {
+            toggleToggle();
         }
         vex::task::sleep(10);
     }

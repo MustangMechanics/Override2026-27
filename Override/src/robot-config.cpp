@@ -15,5 +15,5 @@ vex::motor Intake = vex::motor(vex::PORT11, vex::ratio6_1, false);
 vex::motor RightLifter = vex::motor(vex::PORT19, vex::ratio18_1, false);
 vex::motor LeftLifter = vex::motor(vex::PORT20, vex::ratio18_1, false);
 
-vex::inertial InertialSensor1 = vex::inertial(vex::PORT21);
+vex::inertial InertialSensor = vex::inertial(vex::PORT12);
 

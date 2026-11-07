@@ -17,6 +17,6 @@ extern vex::motor Intake;
 extern vex::motor RightLifter;
 extern vex::motor LeftLifter;
 
-extern vex::inertial InertialSensor1;
+extern vex::inertial InertialSensor;
 
 #endif  // ROBOT_CONFIG_H

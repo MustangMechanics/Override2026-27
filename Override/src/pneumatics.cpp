@@ -4,6 +4,7 @@
 const int HOOP = 0;
 const int TILT = 1;
 const int CATCHER = 2;
+const int TOGGLE = 3;
 
 vex::digital_out* actuators[3];
 
@@ -15,6 +16,7 @@ void initPneumatics() {
     actuators[HOOP] = new vex::digital_out(Brain.ThreeWirePort.A);
     actuators[TILT] = new vex::digital_out(Brain.ThreeWirePort.B);
     actuators[CATCHER] = new vex::digital_out(Brain.ThreeWirePort.C);
+    actuators[TOGGLE] = new vex::digital_out(Brain.ThreeWirePort.D);
 }
 
 void openActuator(int index) {
@@ -43,7 +45,7 @@ void hoopDown() { openActuator(HOOP); }
 void hoopUp() { closeActuator(HOOP); }
 bool toggleHoop() { return toggleActuator(HOOP); }
 
-bool isTiltOut() { return isActOpen[TILT]; }
+bool isTiltOut() { return isActOpen[TILT]; }   
 void tiltOut() { openActuator(TILT); }
 void tiltIn() { closeActuator(TILT); }
 bool toggleTilt() { return toggleActuator(TILT); }
@@ -52,3 +54,8 @@ bool isCatcherOut() { return isActOpen[CATCHER]; }
 void catcherOut() { openActuator(CATCHER); }
 void catcherIn() { closeActuator(CATCHER); }
 bool toggleCatcher() { return toggleActuator(CATCHER); }
+
+bool isToggleOut() { return isActOpen[TOGGLE]; }
+void toggleOut() { openActuator(TOGGLE); }
+void toggleIn() { closeActuator(TOGGLE); }
+bool toggleToggle() { return toggleActuator(TOGGLE); }    

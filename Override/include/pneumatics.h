@@ -18,4 +18,9 @@ void catcherOut();
 void catcherIn();
 bool toggleCatcher();
 
+bool isToggleOut();
+void toggleOut(); 
+void toggleIn();
+bool toggleToggle();
+
 #endif // PNEUMATICS_H

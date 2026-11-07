@@ -86,14 +86,14 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   //Competition.autonomous(autonomous);
   // Competition.drivercontrol(driver);
-  printf("Hello VEX World! !\n");
+  //printf("Hello VEX World! !\n");
 
   // Run the pre-autonomous function.
   pre_auton();
   initPneumatics();
   // driver();
-  testDrive(12);
-
+  //testDrive(12);
+  testTurn(90);
   // Prevent main from exiting with an infinite loop.
   while (true) {
     wait(100, msec);
