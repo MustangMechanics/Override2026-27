@@ -4,6 +4,12 @@
 #include "movement.h"
 
 void normalizedDrive(double x, double y) {
+    if (fabs(x) < 25) {
+        x = x < 0 ? -25 : 25;
+    }
+    if (fabs(y) < 15) {
+        y = y < 0 ? -15 : 15;
+    }
     x = x < 0 ? (x * -x / 100) : (x * x / 100);
     x = x * 0.95; // max turn speed = 95%
 
@@ -63,7 +69,7 @@ void driver(void) {
         }
 
         if (Controller1.ButtonB.pressing()) {
-            toggleHoop();
+            toggleClaw();
         }
         
         if (Controller1.ButtonX.pressing()) {

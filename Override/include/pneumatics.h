@@ -3,10 +3,10 @@
 
 void initPneumatics();
 
-bool isHoopDown();
-void hoopDown();
-void hoopUp();
-bool toggleHoop();
+bool isClawClosed();
+void openClaw();
+void closeClaw();
+bool toggleClaw();
 
 bool isTiltOut();
 void tiltOut();

@@ -62,9 +62,24 @@ void driveForward(double inches, double speed) {
     
     printf("Starting Position: %f degrees, End Position: %f degrees, %f inches\n", travelDegrees, endPosition, inches);
     // add number of degrees needed to turn to the current position to get the end position
+
+    if (inches < 0 && speed > 0) {
+        speed = -speed;
+    } else if (inches > 0 && speed < 0) {
+        speed = -speed;
+    }
     tankDrive(speed, speed);
     
+    long currentTime = vex::timer::system();
+    long endTime = currentTime + 2000; // 2 second timeout
     while (true) {
+
+        currentTime = vex::timer::system();
+        if (currentTime > endTime) {
+            printf("Drive timed out after 2 seconds\n");
+            break;
+        }
+
         currentPosition = (RightMiddle.position(vex::degrees));
         double error = endPosition - currentPosition;
         if (fabs(error) < 29.38) { // 10.58 (changed from 29.38) degrees is 0.5 inches b/c changed 58.76 to 21.16 based on testing
@@ -76,7 +91,7 @@ void driveForward(double inches, double speed) {
     
 
     stopDriving();
-    long endTime = vex::timer::system();
+    endTime = vex::timer::system();
     currentPosition = (RightMiddle.position(vex::degrees));
     printf("Drive Time: %lu ms  Actual distance: %f inches\n", endTime - startTime, currentPosition - startingPosition);
 
@@ -93,13 +108,19 @@ void driveTurn(double degrees, double speed) {
     long startTime = vex::timer::system();
     
     printf("Starting Position: %f degrees, End Position: %f degrees\n", degrees, endPosition);
-    // add number of degrees needed to turn to the current position to get the end position
+    
+    if (degrees < 0 && speed > 0) {
+        speed = -speed;
+    } else if (degrees > 0 && speed < 0) {
+        speed = -speed;
+    }
     tankDrive(speed, -speed);
+
     
     while (true) {
         currentPosition = InertialSensor.rotation(vex::degrees);
-        double error = endPosition - currentPosition;
-        if (fabs(error) < 2) { // 10.58 (changed from 29.38) degrees is 0.5 inches b/c changed 58.76 to 21.16 based on testing
+        double error = currentPosition - endPosition;
+        if (fabs(error) < 2) { 
             break;
         }
         printf("Error: %f degrees  Current position: %f degrees  End position: %f degrees\n ", error, currentPosition, endPosition);
@@ -113,5 +134,17 @@ void driveTurn(double degrees, double speed) {
 
 }
 
+void liftDown (double speed) {
+    RightLifter.spin(vex::forward, speed, vex::percent);
+    LeftLifter.spin(vex::reverse, speed, vex::percent);
+}
 
+void liftUp (double speed) {
+    RightLifter.spin(vex::reverse, speed, vex::percent);
+    LeftLifter.spin(vex::forward, speed, vex::percent);
+}
 
+void liftStop () {
+    RightLifter.stop();
+    LeftLifter.stop();
+}

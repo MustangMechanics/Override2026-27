@@ -1,20 +1,20 @@
 #include "vex.h"
 #include "robot-config.h"
 
-const int HOOP = 0;
-const int TILT = 1;
+const int TILT = 0;
+const int CLAW = 1;
 const int CATCHER = 2;
 const int TOGGLE = 3;
 
-vex::digital_out* actuators[3];
+vex::digital_out* actuators[4];
 
-bool isActOpen[] = {false, false, false};
+bool isActOpen[] = {false, false, false, false};
 
-long nextActTime[] = {0, 0, 0};
+long nextActTime[] = {0, 0, 0, 0};
 
 void initPneumatics() {
-    actuators[HOOP] = new vex::digital_out(Brain.ThreeWirePort.A);
     actuators[TILT] = new vex::digital_out(Brain.ThreeWirePort.B);
+    actuators[CLAW] = new vex::digital_out(Brain.ThreeWirePort.E);
     actuators[CATCHER] = new vex::digital_out(Brain.ThreeWirePort.C);
     actuators[TOGGLE] = new vex::digital_out(Brain.ThreeWirePort.D);
 }
@@ -40,15 +40,16 @@ bool toggleActuator(int index) {
     return false;
 }
 
-bool isHoopDown() { return isActOpen[HOOP]; }
-void hoopDown() { openActuator(HOOP); }
-void hoopUp() { closeActuator(HOOP); }
-bool toggleHoop() { return toggleActuator(HOOP); }
 
 bool isTiltOut() { return isActOpen[TILT]; }   
 void tiltOut() { openActuator(TILT); }
 void tiltIn() { closeActuator(TILT); }
 bool toggleTilt() { return toggleActuator(TILT); }
+
+bool isClawClosed() { return isActOpen[CLAW]; }
+void openClaw() { closeActuator(CLAW); }
+void closeClaw() { openActuator(CLAW); }
+bool toggleClaw() { return toggleActuator(CLAW); }
 
 bool isCatcherOut() { return isActOpen[CATCHER]; }
 void catcherOut() { openActuator(CATCHER); }

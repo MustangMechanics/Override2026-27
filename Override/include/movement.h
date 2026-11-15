@@ -8,5 +8,8 @@ void setBrakeMode(vex::brakeType mode);
 void tankDrive(double leftSpeed, double rightSpeed);
 void driveForward(double distance, double speed);
 void driveTurn(double degrees, double speed);
+void liftUp(double speed);
+void liftDown(double speed);
+void liftStop();
 
 #endif // MOVEMENT_H
