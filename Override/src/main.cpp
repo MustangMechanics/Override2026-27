@@ -84,6 +84,52 @@ void rightAuton(void) {
   liftStop();
   openClaw();
 }  
+
+void skillsAutonLeft(void) {
+
+  driveForward(3, 25);
+  toggleOut();
+  driveForward(-4, 25);
+  driveForward(5.5, 25);
+  driveTurn(-85, 25);
+  driveForward(-6, 25);
+  liftUp(50);
+  vex::task::sleep(300);
+  tiltOut();
+  vex::task::sleep(500);
+  liftDown(50);
+  vex::task::sleep(1000);
+  liftStop();
+  openClaw();
+  // move to the middle for extra 8 points
+  driveForward(3, 25);
+  driveTurn(90, 25);
+  driveForward(8, 25);
+
+}
+
+void skillsAutonRight(void) {
+
+  driveForward(3, 25);
+  toggleOut();
+  driveForward(-4, 25);
+  driveForward(5.5, 25);
+  driveTurn(90, 25);
+  driveForward(-8, 25);
+  liftUp(50);
+  vex::task::sleep(300);
+  tiltOut();
+  vex::task::sleep(500);
+  liftDown(50);
+  vex::task::sleep(1000);
+  liftStop();
+  openClaw();  
+  // move to the middle for extra 8 points
+  driveForward(3, 25);
+  driveTurn(-90, 25);
+  driveForward(8, 25);
+}
+
 void autonomous(void) {
   initializeExpectedHeading(); //Leave at start;
   // ..........................................................................
@@ -125,8 +171,11 @@ void usercontrol(void) {
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(leftAuton);
-  //Competition.autonomous(rightAuton);
+  //Competition.autonomous(leftAuton); // slot 1
+  //Competition.autonomous(rightAuton); // slot 2
+  //Competition.autonomous(skillsAutonLeft); // slot 3
+  //Competition.autonomous(skillsAutonRight); // slot 4
+  //Competition.autonomous(autonomous); // slot 5
   Competition.drivercontrol(driver);
   //printf("Hello VEX World! !\n");
 
