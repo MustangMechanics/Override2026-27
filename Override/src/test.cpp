@@ -29,3 +29,26 @@ void testTurn (double degrees) {
     printf("%f degrees, %lu milliseconds, %f degrees traveled\n", degrees, endTime - startTime, (endingPosition - startingPosition));
 
 }
+
+void testInchDrive (double inches) {
+    double startingPosition = getInches();
+    inchDrive(inches);
+    double endingPosition = getInches();
+    printf("target (in): %f, actual (in): %f\n", inches, endingPosition - startingPosition);
+}
+
+void testInertialTurn (double degrees) {
+    double startingPosition = InertialSensor.rotation(vex::deg);
+    long startTime = vex::timer::system();
+
+    turn(degrees);
+
+    long endTime = vex::timer::system();
+    vex::task::sleep(1000);
+    double endingPosition = InertialSensor.rotation(vex::deg);
+
+    printf("target: %f, actual: %f\n", degrees, (endingPosition - startingPosition));
+}
+
+
+

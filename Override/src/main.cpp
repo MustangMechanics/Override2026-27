@@ -83,6 +83,12 @@ void rightAuton(void) {
   vex::task::sleep(1000);
   liftStop();
   openClaw();
+}  
+void autonomous(void) {
+  initializeExpectedHeading(); //Leave at start;
+  // ..........................................................................
+  // Insert autonomous user code here.
+  driveAtSpeed(30);
 
   // ..........................................................................
 }
